@@ -1,0 +1,145 @@
+basePath: /api
+definitions:
+  main.User:
+    properties:
+      userEMail:
+        example: d.venturini@gmail.com
+        type: string
+      userName:
+        example: Davide Venturini
+        type: string
+    type: object
+host: localhost:8080
+info:
+  contact:
+    email: dventurini@swagger.io
+    name: API Support
+  description: Un semplice servizio demo per la gestione degli utenti
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+  termsOfService: http://swagger.io/terms/
+  title: Users API
+  version: "1.0"
+paths:
+  /users:
+    get:
+      consumes:
+      - application/json
+      description: Get details of all users
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/main.User'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/main.User'
+      summary: Get details of all users
+      tags:
+      - users
+    post:
+      consumes:
+      - application/json
+      description: Create new user
+      parameters:
+      - description: Create User
+        in: body
+        name: user
+        required: true
+        schema:
+          $ref: '#/definitions/main.User'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/main.User'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/main.User'
+      summary: Create a new user with the input paylod
+      tags:
+      - users
+  /users/{id}:
+    delete:
+      consumes:
+      - application/json
+      description: Remove user based on given id
+      operationId: user-by-userid
+      parameters:
+      - description: User ID
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/main.User'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/main.User'
+      summary: Remove user based on given id
+      tags:
+      - users
+    get:
+      consumes:
+      - application/json
+      description: get detail by ID
+      operationId: get-user-detail-by-userid
+      parameters:
+      - description: User ID
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/main.User'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/main.User'
+      summary: Retrieves user based on given id
+      tags:
+      - users
+    put:
+      consumes:
+      - application/json
+      description: Update user based on given id
+      operationId: user-by-userid
+      parameters:
+      - description: User ID
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/main.User'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/main.User'
+      summary: Update user based on given id
+      tags:
+      - users
+swagger: "2.0"
